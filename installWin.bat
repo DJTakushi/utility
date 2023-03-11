@@ -1,0 +1,12 @@
+winget install -e --id Git.Git
+winget install -e --id Docker.DockerDesktop
+winget install -e --id evernote.evernote
+winget install -e --id flux.flux
+winget install -e --id GIMP.GIMP
+winget install -e --id GitHub.GitHubDesktop
+winget install -e --id LINE.LINE
+winget install -e --id Python.Python.3
+winget install -e --id Telegram.TelegramDesktop
+winget install -e --id WhatsApp.WhatsApp
+winget install -e --id WinMerge.WinMerge
+winget install -e --id evernote.evernote
