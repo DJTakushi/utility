@@ -10,3 +10,4 @@ winget install -e --id Telegram.TelegramDesktop
 winget install -e --id WhatsApp.WhatsApp
 winget install -e --id WinMerge.WinMerge
 winget install -e --id evernote.evernote
+winget install -e --id Dropbox.Dropbox
