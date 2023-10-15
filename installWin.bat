@@ -6,7 +6,7 @@ REM coding
 winget install -e --id Git.Git
 winget install -e --id GitHub.GitHubDesktop
 winget install -e --id Microsoft.VisualStudioCode
-winget install -e --id Python.Python.3
+winget install -e --id Python.Python.3.10
 winget install -e --id WinMerge.WinMerge
 winget install -e --id Docker.DockerDesktop
 
