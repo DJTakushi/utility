@@ -21,3 +21,7 @@ winget install -e --id WhatsApp.WhatsApp
 
 REM files support
 winget install -e --id Dropbox.Dropbox
+
+git config user.name "danny"
+git config user.email "okinawanspud@gmail.com"
+
