@@ -8,11 +8,15 @@ sudo apt install -y \
 pip3 install --upgrade pip
 python3 -m pip install mysql-connector
 
-sudo snap install \
-  --classic code \
-  firefox \
-  sublime \
-  postman
+sudo snap install --classic code
+sudo snap install firefox
+sudo snap install postman
+
+#sublime
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
 
 # Radio
 # https://github.com/gqrx-sdr/gqrx
