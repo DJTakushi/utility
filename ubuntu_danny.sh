@@ -1,5 +1,6 @@
 sudo apt install -y \
   curl \
+  doxygen \
   git \
   gparted \
   python3-distutils \
