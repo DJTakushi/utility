@@ -13,6 +13,7 @@ pip3 install mysql-connector
 sudo snap install --classic code
 sudo snap install firefox
 sudo snap install postman
+sudo snap install telegram-desktop
 
 #sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
