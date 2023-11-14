@@ -6,8 +6,9 @@ sudo apt install -y \
   python3-distutils \
   python3-pip \
   vlc
+sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 pip3 install --upgrade pip
-python3 -m pip install mysql-connector
+pip3 install mysql-connector
 
 sudo snap install --classic code
 sudo snap install firefox
