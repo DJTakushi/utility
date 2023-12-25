@@ -23,16 +23,18 @@ sudo apt-get install sublime-text
 
 # Radio
 # https://github.com/gqrx-sdr/gqrx
-git clone https://github.com/gqrx-sdr/gqrx.git gqrx.git
-cd gqrx.git
-mkdir build
-cd build
-cmake ..
-make install
-sudo ldconfig
-sudo cp ../rtl-sdr.rules /etc/udev/rules.d/
-sudo bash -c 'echo "blacklist dvb_usb_rtl28xxu" >> \
-  /etc/modprobe.d/blacklist-rtl.conf'
+# git clone https://github.com/gqrx-sdr/gqrx.git gqrx.git
+# cd gqrx.git
+# mkdir build
+# cd build
+# cmake ..
+# make install
+# sudo ldconfig
+# sudo cp ../rtl-sdr.rules /etc/udev/rules.d/
+# sudo bash -c 'echo "blacklist dvb_usb_rtl28xxu" >> \
+#   /etc/modprobe.d/blacklist-rtl.conf'
+sudo apt install gqrx-sdr
+
 
 # Edge for teams (chromium seems to not work nicely with Brave, and --google)
 # https://www.omgubuntu.co.uk/2021/01/how-to-install-edge-on-ubuntu-linux
