@@ -2,6 +2,7 @@ sudo apt install -y \
   curl \
   doxygen \
   git \
+  cmake \
   gparted \
   python3-distutils \
   python3-pip \
