@@ -10,6 +10,7 @@ sudo apt install -y \
 sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 pip3 install --upgrade pip
 pip3 install mysql-connector
+pip3 install iotedgedev
 
 sudo snap install --classic code
 sudo snap install firefox
