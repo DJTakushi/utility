@@ -53,3 +53,9 @@ sudo apt install brave-browser
 
 git config user.email "dannytakushi@gmail.com"
 git config user.name "danny"
+
+
+# Note, screen sharing in teams gave me trouble. 
+# Check out this thread: https://askubuntu.com/questions/1407494/screen-share-not-working-in-ubuntu-22-04-in-all-platforms-zoom-teams-google-m 
+## First option worked, but X11 performed poorly on my hardware setup (4k monitor)
+## vr4u's comment on enabling Additional Drivers worked perfectly for me
