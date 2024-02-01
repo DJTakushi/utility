@@ -4,7 +4,6 @@ sudo apt install -y \
   git \
   cmake \
   gparted \
-  python3-distutils \
   python3-pip \
   vlc
 sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
