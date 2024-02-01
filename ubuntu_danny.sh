@@ -6,7 +6,8 @@ sudo apt install -y \
   gparted \
   python3-pip \
   vlc \
-  net-tools
+  net-tools \
+  gimp
 sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 pip3 install --upgrade pip
 pip3 install mysql-connector
