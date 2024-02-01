@@ -5,7 +5,8 @@ sudo apt install -y \
   cmake \
   gparted \
   python3-pip \
-  vlc
+  vlc \
+  net-tools
 sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
 pip3 install --upgrade pip
 pip3 install mysql-connector
