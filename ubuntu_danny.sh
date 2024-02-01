@@ -82,3 +82,6 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 # not in the official instructions, but seems very important
 sudo apt-get install docker-compose
+
+
+# if network drivers need to be loaded for r8125, see https://askubuntu.com/questions/1402709/how-to-install-ethernet-driver-on-ubuntu-server-20-04-4-lts
