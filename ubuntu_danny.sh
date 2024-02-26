@@ -85,4 +85,14 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo apt-get install docker-compose
 
 
-# if network drivers need to be loaded for r8125, see https://askubuntu.com/questions/1402709/how-to-install-ethernet-driver-on-ubuntu-server-20-04-4-lts
+# if network drivers need to be loaded for r8125, see https://askubuntu.com/questions/1423298/ethernet-controller-realtek-r8125-not-working-with-kernel-5-15
+sudo apt update 
+sudo apt install r8125-dkms
+
+sudo tee -a /etc/modprobe.d/blacklist-r8169.conf > /dev/null <<EOT
+# To use r8125 driver explicitly
+blacklist r8169
+EOT
+
+# apply the blacklisted driver
+sudo update-initramfs -u
