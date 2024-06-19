@@ -12,6 +12,9 @@ sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 pip3 install --upgrade pip
 pip3 install mysql-connector
 pip3 install iotedgedev
+# possibly required for rmqcp.py error : ModuleNotFoundError: No module named 'urllib3.packages.six'"
+pip3 uninstall urllib3
+pip3 install urllib3
 
 sudo snap install --classic code
 sudo snap install firefox
