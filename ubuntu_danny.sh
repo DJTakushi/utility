@@ -82,7 +82,7 @@ sudo apt-get update
 # To install the latest version, run:
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 # not in the official instructions, but seems very important
-sudo apt-get install docker-compose
+sudo apt-get install -y docker-compose
 
 
 # if network drivers need to be loaded for r8125, see https://askubuntu.com/questions/1423298/ethernet-controller-realtek-r8125-not-working-with-kernel-5-15
