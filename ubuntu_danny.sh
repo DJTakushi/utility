@@ -54,8 +54,8 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 sudo apt update
 sudo apt install brave-browser
 
-git config user.email "dannytakushi@gmail.com"
-git config user.name "danny"
+git config --global user.email "dannytakushi@gmail.com"
+git config --global user.name "danny"
 
 
 # Note, screen sharing in teams gave me trouble. 
