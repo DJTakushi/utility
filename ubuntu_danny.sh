@@ -8,7 +8,7 @@ sudo apt install -y \
   vlc \
   net-tools \
   gimp
-sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 pip3 install --upgrade pip
 pip3 install mysql-connector
 pip3 install iotedgedev
