@@ -99,3 +99,10 @@ EOT
 
 # apply the blacklisted driver
 sudo update-initramfs -u
+
+# Dropbox
+https://www.dropbox.com/install-linux
+```
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd
+```
