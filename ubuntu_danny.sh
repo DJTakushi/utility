@@ -1,31 +1,29 @@
 sudo apt install -y \
-  curl \
   doxygen \
   git \
-  cmake \
   gparted \
-  python3-pip \
-  vlc \
-  net-tools \
   gimp
-sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
-pip3 install --upgrade pip
-pip3 install mysql-connector
-pip3 install iotedgedev
-# possibly required for rmqcp.py error : ModuleNotFoundError: No module named 'urllib3.packages.six'"
-pip3 uninstall urllib3
-pip3 install urllib3
+# TODO : 
+# sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGE
+# pip3 install --upgrade pip
+# pip3 install mysql-connector
+# pip3 install iotedgedev
+# # possibly required for rmqcp.py error : ModuleNotFoundError: No module named 'urllib3.packages.six'"
+# pip3 uninstall urllib3
+# pip3 install urllib3
 
+sudo snap install brave
 sudo snap install --classic code
-sudo snap install firefox
+# sudo snap install firefox # installed by default
 sudo snap install postman
 sudo snap install telegram-desktop
+sudo snap install curl
+sudo snap install cmake --classic
+sudo snap install sublime-text --classic
+sudo snap install vlc
+sudo snap install net-tools-snap --edge
+sudo snap install gimp
 
-#sublime
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-sudo apt-get update
-sudo apt-get install sublime-text
 
 # Radio
 # https://github.com/gqrx-sdr/gqrx
@@ -43,19 +41,12 @@ sudo apt install gqrx-sdr
 
 
 # Edge for teams (chromium seems to not work nicely with Brave, and --google)
-# https://www.omgubuntu.co.uk/2021/01/how-to-install-edge-on-ubuntu-linux
+# https://www.omgubuntu.co.uk/2021/01/how-to-install-edge-on-ubuntu-linuxsudo apt update && sudo apt install microsoft-edge-stable
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
 sudo rm microsoft.gpg
 sudo apt update && sudo apt install microsoft-edge-stable
-
-# Brave from official instructions
-# https://brave.com/linux/
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update
-sudo apt install brave-browser
 
 git config --global user.email "dannytakushi@gmail.com"
 git config --global user.name "danny"
