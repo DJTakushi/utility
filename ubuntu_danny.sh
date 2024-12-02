@@ -23,6 +23,7 @@ sudo snap install sublime-text --classic
 sudo snap install vlc
 sudo snap install net-tools-snap --edge
 sudo snap install gimp
+sudo snap install tusk
 
 
 # Radio
@@ -60,23 +61,24 @@ git config --global user.name "danny"
 
 # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 # Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+# sudo apt-get update
+# sudo apt-get install ca-certificates curl
+# sudo install -m 0755 -d /etc/apt/keyrings
+# sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+# sudo chmod a+r /etc/apt/keyrings/docker.asc
+sudo snap install docker
 
 # Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# echo \
+#   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+#   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+#   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
 # To install the latest version, run:
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# sudo aptd-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 # not in the official instructions, but seems very important
-sudo apt-get install -y docker-compose
+# sudo apt-get install -y docker-compose
 
 
 # if network drivers need to be loaded for r8125, see https://askubuntu.com/questions/1423298/ethernet-controller-realtek-r8125-not-working-with-kernel-5-15
