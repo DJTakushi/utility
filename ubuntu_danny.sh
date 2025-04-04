@@ -1,8 +1,8 @@
 sudo apt install -y \
   doxygen \
   git \
-  gparted \
-  gimp
+  gparted 
+
 # TODO : 
 # sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGE
 # pip3 install --upgrade pip
@@ -12,12 +12,13 @@ sudo apt install -y \
 # pip3 uninstall urllib3
 # pip3 install urllib3
 
-sudo snap install brave
+sudo snap install curl
+# sudo snap install brave # suggested to not use snap yet
+curl -fsS https://dl.brave.com/install.sh | sh
 sudo snap install --classic code
 # sudo snap install firefox # installed by default
 sudo snap install postman
 sudo snap install telegram-desktop
-sudo snap install curl
 sudo snap install cmake --classic
 sudo snap install sublime-text --classic
 sudo snap install vlc
