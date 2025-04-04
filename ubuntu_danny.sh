@@ -114,3 +114,7 @@ https://www.dropbox.com/install-linux
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 ~/.dropbox-dist/dropboxd
 ```
+
+
+# dotnet
+sudo apt-get update &&  sudo apt-get install -y dotnet-sdk-8.0 aspnetcore-runtime-8.0
