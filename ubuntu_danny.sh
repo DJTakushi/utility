@@ -15,17 +15,17 @@ sudo apt install -y \
 sudo snap install curl
 # sudo snap install brave # suggested to not use snap yet
 curl -fsS https://dl.brave.com/install.sh | sh
-sudo snap install --classic code
+# sudo snap install --classic code # download .deb and install manually
 # sudo snap install firefox # installed by default
 sudo snap install postman
 sudo snap install telegram-desktop
 sudo snap install cmake --classic
-sudo snap install sublime-text --classic
+# sudo snap install sublime-text --classic
 sudo snap install vlc
-sudo snap install net-tools-snap --edge
+sudo apt install net-tools
 sudo snap install gimp
-sudo snap install tusk
-
+# sudo snap install tusk
+# discord # download .deb & install manually
 
 # Radio
 # https://github.com/gqrx-sdr/gqrx
