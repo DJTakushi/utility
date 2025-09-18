@@ -121,3 +121,6 @@ sudo apt-get update &&  sudo apt-get install -y dotnet-sdk-8.0 aspnetcore-runtim
 
 # rsa key for j4
 ssh-keygen -t rsa
+
+# ubunut Nvidea drivers can be a pain. Upgrade with https://documentation.ubuntu.com/server/how-to/graphics/install-nvidia-drivers/
+sudo ubuntu-drivers install
