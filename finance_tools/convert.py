@@ -24,6 +24,18 @@ PROFILE_MAP = {
         "date_output_format": "%Y-%m-%d",
         "sort_ascending": True,
     },
+    "ally": {
+        "column_rename": {
+            "Date": "Date",
+            "Description": "Name",
+            "Amount": "Amount",
+        },
+        "lead_columns": ["Date", "Name", "Amount"],
+        "date_column": "Date",
+        "date_format": "%Y-%m-%d",
+        "date_output_format": "%Y-%m-%d",
+        "sort_ascending": True,
+    },
 }
 
 
@@ -81,6 +93,7 @@ def convert_file(filepath: Path, profile_key: str) -> Path:
 
     # Build final column order: lead columns first, then remaining in original order
     all_dest_cols = [rename.get(c, c) for c in source_columns]
+    print  ("DEBUG: all_dest_cols =", all_dest_cols)
     remaining = [c for c in all_dest_cols if c not in lead]
     output_columns = lead + remaining
 
