@@ -57,18 +57,43 @@ def convert_file(filepath: Path, profile_key: str) -> Path:
     date_out_fmt = profile.get("date_output_format")
     ascending = profile["sort_ascending"]
 
+
+
     with open(filepath, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        source_columns = reader.fieldnames or []
+        # reader = csv.DictReader(f)
+        # source_columns = reader.fieldnames or []
+        # rows = list(reader)
+        header_line = f.readline()
+        # Split by comma and strip whitespace from each header name
+        source_columns = [header.strip() for header in header_line.split(',')]
+        
+        # Use the cleaned headers with DictReader
+        # The original header line was consumed by f.readline(), 
+        # so DictReader will start from the next data row.
+        reader = csv.DictReader(f, fieldnames=source_columns)
+        
+        # for row in reader:
+        #     # Now 'row' is a dictionary with trimmed keys
+        #     # print(row)
+        #     rows = list(reader)
         rows = list(reader)
+
+
+    print(source_columns)
+
 
     # Build renamed rows
     renamed_rows = []
     for row in rows:
+        print(rename)
         new_row = {}
         for src_col in source_columns:
             dest_col = rename.get(src_col, src_col)
+            print(f"{dest_col} = rename.get({src_col}, {src_col})")
             new_row[dest_col] = row[src_col]
+            if dest_col != src_col:
+              print(f"{dest_col} : {new_row[dest_col]}")
+        print(new_row)
         renamed_rows.append(new_row)
 
     # Sort by date
