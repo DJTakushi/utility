@@ -4,5 +4,16 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"window.autoDetectColorScheme": true,
+		"workbench.preferredDarkColorTheme": "Default High Contrast",
+		"workbench.preferredLightColorTheme": "Matter (by Particle)",
+		"workbench.preferredHighContrastLightColorTheme": "Matter (by Particle)",
+		"editor.rulers": [
+			{
+				"column": 80,
+				"color": "#80ffff"
+			},
+		],
+	}
 }
