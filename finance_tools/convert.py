@@ -5,6 +5,7 @@ import csv
 import glob
 import os
 from pathlib import Path
+from decimal import Decimal, InvalidOperation
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DATA_DIR = SCRIPT_DIR / "data"
@@ -23,6 +24,23 @@ PROFILE_MAP = {
         "date_format": "%m/%d/%Y",
         "date_output_format": "%Y-%m-%d",
         "sort_ascending": True,
+    },
+    "CIT": {
+        "column_rename": {
+            "Date": "Date",
+            "Description": "Name",
+            "Debits(-)": "Debit",
+            "Credits(+)": "Credit",
+        },
+        "lead_columns": ["Date", "Name", "Amount"],
+        "date_column": "Date",
+        "date_format": "%m/%d/%Y",
+        "date_output_format": "%Y-%m-%d",
+        "sort_ascending": True,
+        "combine_amount": {
+            "debit": "Debits(-)",
+            "credit": "Credits(+)"
+        },
     },
     "ally": {
         "column_rename": {
@@ -47,6 +65,17 @@ def detect_profile(filename: str) -> str | None:
     return None
 
 
+def parse_money(value: str) -> Decimal:
+    """Parse currency-like strings into Decimal, defaulting to 0."""
+    cleaned = (value or "").strip().replace("$", "").replace(",", "")
+    if not cleaned:
+        return Decimal("0")
+    try:
+        return Decimal(cleaned)
+    except InvalidOperation:
+        return Decimal("0")
+
+
 def convert_file(filepath: Path, profile_key: str) -> Path:
     """Read a CSV, apply the profile transformations, and write to output/."""
     profile = PROFILE_MAP[profile_key]
@@ -57,43 +86,44 @@ def convert_file(filepath: Path, profile_key: str) -> Path:
     date_out_fmt = profile.get("date_output_format")
     ascending = profile["sort_ascending"]
 
-
+    combine_amount = profile.get("combine_amount")
 
     with open(filepath, newline="", encoding="utf-8") as f:
-        # reader = csv.DictReader(f)
-        # source_columns = reader.fieldnames or []
-        # rows = list(reader)
-        header_line = f.readline()
-        # Split by comma and strip whitespace from each header name
-        source_columns = [header.strip() for header in header_line.split(',')]
-        
-        # Use the cleaned headers with DictReader
-        # The original header line was consumed by f.readline(), 
-        # so DictReader will start from the next data row.
-        reader = csv.DictReader(f, fieldnames=source_columns)
-        
-        # for row in reader:
-        #     # Now 'row' is a dictionary with trimmed keys
-        #     # print(row)
-        #     rows = list(reader)
-        rows = list(reader)
-
-
-    print(source_columns)
+        reader = csv.DictReader(f)
+        source_columns = [
+            (header or "").strip().lstrip("\ufeff")
+            for header in (reader.fieldnames or [])
+            if (header or "").strip()
+        ]
+        rows = []
+        for row in reader:
+            normalized = {}
+            for key, value in row.items():
+                if key is None:
+                    # Ignore unnamed trailing fields in some exports (e.g. balance column without header).
+                    continue
+                clean_key = key.strip().lstrip("\ufeff")
+                normalized[clean_key] = value
+            rows.append(normalized)
 
 
     # Build renamed rows
     renamed_rows = []
     for row in rows:
-        print(rename)
         new_row = {}
         for src_col in source_columns:
             dest_col = rename.get(src_col, src_col)
-            print(f"{dest_col} = rename.get({src_col}, {src_col})")
-            new_row[dest_col] = row[src_col]
-            if dest_col != src_col:
-              print(f"{dest_col} : {new_row[dest_col]}")
-        print(new_row)
+            new_row[dest_col] = row.get(src_col, "")
+
+        if combine_amount:
+            debit_col = combine_amount["debit"]
+            credit_col = combine_amount["credit"]
+            debit_val = parse_money(row.get(debit_col, ""))
+            credit_val = parse_money(row.get(credit_col, ""))
+            # Use credit - debit so outgoing transactions become negative.
+            amount = credit_val - abs(debit_val)
+            new_row["Amount"] = f"{amount:.2f}"
+
         renamed_rows.append(new_row)
 
     # Sort by date
@@ -118,7 +148,8 @@ def convert_file(filepath: Path, profile_key: str) -> Path:
 
     # Build final column order: lead columns first, then remaining in original order
     all_dest_cols = [rename.get(c, c) for c in source_columns]
-    print  ("DEBUG: all_dest_cols =", all_dest_cols)
+    if combine_amount and "Amount" not in all_dest_cols:
+        all_dest_cols.append("Amount")
     remaining = [c for c in all_dest_cols if c not in lead]
     output_columns = lead + remaining
 
