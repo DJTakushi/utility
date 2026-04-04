@@ -25,6 +25,18 @@ PROFILE_MAP = {
         "date_output_format": "%Y-%m-%d",
         "sort_ascending": True,
     },
+    "Chase5863": {
+        "column_rename": {
+            "Transaction Date": "Date",
+            "Description": "Name",
+            "Amount": "Amount",
+        },
+        "lead_columns": ["Date", "Name", "Amount"],
+        "date_column": "Date",
+        "date_format": "%m/%d/%Y",
+        "date_output_format": "%Y-%m-%d",
+        "sort_ascending": True,
+    },
     "CIT": {
         "column_rename": {
             "Date": "Date",
@@ -105,7 +117,6 @@ def convert_file(filepath: Path, profile_key: str) -> Path:
                 clean_key = key.strip().lstrip("\ufeff")
                 normalized[clean_key] = value
             rows.append(normalized)
-
 
     # Build renamed rows
     renamed_rows = []
