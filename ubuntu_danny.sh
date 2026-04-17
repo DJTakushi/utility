@@ -124,3 +124,7 @@ ssh-keygen -t rsa
 
 # ubunut Nvidea drivers can be a pain. Upgrade with https://documentation.ubuntu.com/server/how-to/graphics/install-nvidia-drivers/
 sudo ubuntu-drivers install
+
+#xbox 360 driver run
+sudo xboxdrv --silent
+
